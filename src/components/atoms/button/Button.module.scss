@@ -1,0 +1,55 @@
+@use "../../../styles/mixins" as m;
+
+.base {
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
+  transition: color var(--speed) ease, background-color var(--speed) ease,
+    border-color var(--speed) ease, filter var(--speed) ease,
+    opacity var(--speed) ease;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+/* Send / enter */
+.primary {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: var(--bubble-user);
+  color: var(--on-accent);
+  font-size: 15px;
+
+  &:hover:not(:disabled) {
+    filter: brightness(1.1);
+  }
+
+  @include m.focus-ring($border: false);
+}
+
+/* Header controls */
+.icon {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+
+  @include m.soft-surface;
+}
+
+/* Suggestion pills */
+.chip {
+  padding: 7px 13px;
+  border-radius: 999px;
+  font-size: 13px;
+
+  @include m.soft-surface;
+}

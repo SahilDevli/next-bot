@@ -1,0 +1,16 @@
+.cntBtn{
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 7px 10px;
+    margin: 15px 5px;
+    color: rgb(144, 58, 255);
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 2px rgb(144, 58, 255);
+    transition: all 0.2s ease-in-out;
+}
+.cntBtn:hover{
+    box-shadow: 0px 0px 7px rgb(119, 16, 255);
+}
