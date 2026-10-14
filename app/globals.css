@@ -1,26 +1,130 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   Design tokens
+   Dark is the default theme. Every colour the UI uses is a variable here,
+   so switching themes later only means flipping `data-theme` on <html>.
+   ========================================================================== */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* surfaces */
+  --bg: #0b0d12;
+  --surface: #12151c;
+  --surface-2: #181c25;
+  --surface-3: #1f2430;
+
+  /* lines */
+  --border: #242a36;
+  --border-strong: #323a4a;
+
+  /* text */
+  --text: #e8eaf0;
+  --text-muted: #9aa3b2;
+  --text-faint: #6b7280;
+
+  /* brand / accent */
+  --accent: #6366f1;
+  --accent-hover: #7c7ff3;
+  --accent-soft: #6366f11f;
+  --accent-2: #8b5cf6;
+  --on-accent: #ffffff;
+
+  /* chat bubbles */
+  --bubble-bot: var(--surface-2);
+  --bubble-bot-text: var(--text);
+  --bubble-user: linear-gradient(135deg, var(--accent), var(--accent-2));
+  --bubble-user-text: var(--on-accent);
+
+  /* status + feedback */
+  --success: #34d399;
+  --danger: #f87171;
+
+  /* effects */
+  --ring: 0 0 0 3px var(--accent-soft);
+  --shadow-lg: 0 24px 60px -12px rgb(0 0 0 / 0.65);
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+
+  /* shape + motion */
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-bubble: 18px;
+  --speed: 160ms;
+
+  color-scheme: dark;
 }
 
+:root[data-theme="light"] {
+  --bg: #f5f6f9;
+  --surface: #ffffff;
+  --surface-2: #f1f3f7;
+  --surface-3: #e8ebf1;
+
+  --border: #e2e5ea;
+  --border-strong: #cfd4dd;
+
+  --text: #141821;
+  --text-muted: #5b6372;
+  --text-faint: #8b93a1;
+
+  --accent: #5b57e8;
+  --accent-hover: #4a46d8;
+  --accent-soft: #5b57e81a;
+  --accent-2: #8b5cf6;
+  --on-accent: #ffffff;
+
+  --success: #10b981;
+  --danger: #ef4444;
+
+  --shadow-lg: 0 24px 60px -18px rgb(23 28 41 / 0.18);
+  --shadow-sm: 0 1px 2px rgb(23 28 41 / 0.08);
+
+  color-scheme: light;
+}
+
+/* Follow the OS only when nothing is pinned on <html>.
+   Remove data-theme from the root layout to opt into this. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --bg: #f5f6f9;
+    --surface: #ffffff;
+    --surface-2: #f1f3f7;
+    --surface-3: #e8ebf1;
+    --border: #e2e5ea;
+    --border-strong: #cfd4dd;
+    --text: #141821;
+    --text-muted: #5b6372;
+    --text-faint: #8b93a1;
+    --accent: #5b57e8;
+    --accent-hover: #4a46d8;
+    --accent-soft: #5b57e81a;
+    --shadow-lg: 0 24px 60px -18px rgb(23 28 41 / 0.18);
+    color-scheme: light;
+  }
+}
+
+/* Expose the tokens to Tailwind utilities (bg-surface, text-muted, ...) */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-muted: var(--text-muted);
+  --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color var(--speed) ease, color var(--speed) ease;
 }
