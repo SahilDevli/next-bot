@@ -1,9 +1,9 @@
-import { createOpenAI } from "@ai-sdk/openai";
-import { experimental_transcribe as transcribe } from "ai";
+import { gateway } from "@ai-sdk/gateway";
+import { transcribe } from "ai";
 
 export const runtime = "nodejs";
 
-const openai = createOpenAI({ apiKey: process.env.OPENAI_API_KEY });
+// const openai = createOpe({ apiKey: process.env.OPENAI_API_KEY });
 
 const MAX_BYTES = 10 * 1024 * 1024; // 10 MB
 
@@ -26,7 +26,7 @@ export async function POST(request: Request) {
     }
 
     const { text } = await transcribe({
-      model: openai.transcription("gpt-4o-mini-transcribe"),
+      model: gateway.transcriptionModel("openai/gpt-4o-mini-transcribe"),
       audio: new Uint8Array(buffer),
     });
 

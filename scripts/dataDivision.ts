@@ -4,14 +4,8 @@ import { createClient } from "@supabase/supabase-js";
 import { createOpenAI } from "@ai-sdk/openai";
 import { embedMany } from "ai";
 
-import {
-  readFile,
-} from "node:fs/promises";
-import {
-  basename,
-  relative,
-  resolve,
-} from "node:path";
+import { readFile } from "node:fs/promises";
+import { basename, relative, resolve } from "node:path";
 
 config({ path: resolve(process.cwd(), ".env") });
 

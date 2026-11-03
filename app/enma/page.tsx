@@ -178,28 +178,16 @@ function Icon({ name, size = 18 }: { name: IconName; size?: number }) {
 
 const starterPrompts = [
   {
-    title: "Learn something",
-    description: "Explain a complex topic simply",
-    prompt: "Explain the JavaScript event loop in a clear, visual way.",
+    title: "Nagarro Constitution",
+    description: "what is Nagarro Constitution?",
+    prompt: "What is Nagarro constitution?",
     symbol: "01",
   },
   {
-    title: "Build something",
-    description: "Turn an idea into a plan",
-    prompt: "Help me plan a clean, scalable Next.js chat application.",
+    title: "What constitution contain",
+    description: "",
+    prompt: "List All the major heading of contitution and little discription about it.",
     symbol: "02",
-  },
-  {
-    title: "Think it through",
-    description: "Explore options and trade-offs",
-    prompt: "Help me compare a few approaches and choose the best one.",
-    symbol: "03",
-  },
-  {
-    title: "Write with clarity",
-    description: "Shape rough thoughts into words",
-    prompt: "Help me turn a rough idea into a concise, polished message.",
-    symbol: "04",
   },
 ];
 
